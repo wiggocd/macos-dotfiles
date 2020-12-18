@@ -22,12 +22,14 @@ Configuration for macOS Catalina 10.15.7
 # Usage
 - Install the programs which you require
 - Go to the link to simple-bar to install the bar
-- Run `./install.sh`. This will overwrite your current terminal configuration and some other configuration files
+- ***Run `./install.sh`. This will overwrite your current terminal configuration and some other configuration files***
+____
 - Run `p10k configure` to setup powerlevel10k
 - Start Ubersicht, click the bar and configure the bar to your needs with Command+, - the settings which I use include the light theme, floating bar and no colors for the data panel
 - To get the micro text editor theme, open up micro, open the command runner with Ctrl+e and run `set colorscheme one-dark`
-
 - Switch to dark mode and run `customdarkmode` with `restartfinder` to enable light theme for applications whilst retaining dark UI elements
+- Import the iTerm2 color profiles by opening iTerm2 preferences > Profiles > Other Actions > Import JSON Profiles
+- Import the dark macOS Terminal profile by opening the Terminal preferences > Profiles > Settings Dropdown > Import
 
 Enjoy!
 
