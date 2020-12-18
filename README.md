@@ -36,6 +36,6 @@ Enjoy!
 
 ## Screenshots
 
-![Terminals](screenshots/terminals.png)
-
 ![Editor with Yabai window management](screenshots/editor_yabai.png)
+
+![Terminals](screenshots/terminals.png)
