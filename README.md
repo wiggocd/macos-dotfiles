@@ -24,7 +24,7 @@ Configuration for macOS Catalina 10.15.7
 - Go to the link to simple-bar to install the bar
 - Run `./install.sh`. This will overwrite your current terminal configuration and some other configuration files
 - Run `p10k configure` to setup powerlevel10k
-- Configure the bar to your needs with Command+, after enabling Ubersicht and clicking the bar: the settings which I use include the light theme, floating bar and no colors for the data panel
+- Start Ubersicht, click the bar and configure the bar to your needs with Command+, - the settings which I use include the light theme, floating bar and no colors for the data panel
 - To get the micro text editor theme, open up micro, open the command runner with Ctrl+e and run `set colorscheme one-dark`
 
 - Switch to dark mode and run `customdarkmode` with `restartfinder` to enable light theme for applications whilst retaining dark UI elements
@@ -33,3 +33,6 @@ Enjoy!
 
 ## Screenshots
 
+![Terminals](screenshots/terminals.png)
+
+![Editor with Yabai window management](screenshots/editor_yabai.png)
