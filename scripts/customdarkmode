@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+defaults write -g NSRequiresAquaSystemAppearance -bool Yes
+defaults write com.cocoatech.Terminal NSRequiresAquaSystemAppearance -bool No
+
+defaults write com.apple.Spotlight NSRequiresAquaSystemAppearance -bool No
+killall Spotlight
+defaults write com.apple.notificationcenterui NSRequiresAquaSystemAppearance -bool No
+killall NotificationCenter

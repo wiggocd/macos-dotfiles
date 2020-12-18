@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+# BOOTDSK=$(df / | grep / | cut -d" " -f1 | cut -d"s" -f 1,2)
+# EFIPATH=$BOOTDSK"s1"
+
+EXECPATH=$(basename $0)
+
+if [ -z $1 ]
+then
+	HELPSTR="\nSyntax: $EXECPATH <args>"
+	HELPSTR="$HELPSTR\n\nargs:"
+	HELPSTR="$HELPSTR\n\tmount\t: Mounts the first EFI partition found."
+	HELPSTR="$HELPSTR\n\tunmount\t: Unmounts the same partition."
+	HELPSTR="$HELPSTR\n"
+	
+	echo $HELPSTR
+	exit
+fi
+
+EFIPATH=$(diskutil list | grep -i "EFI" | awk '/ / {print $6}' | grep -m1 "disk")
+
+if [ $1 == "mount" ]
+then
+	sudo diskutil mount $EFIPATH
+elif [ $1 == "unmount" ]
+then
+	sudo diskutil unmount $EFIPATH
+fi

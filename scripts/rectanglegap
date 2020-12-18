@@ -1,0 +1,7 @@
+if [ -n "$1" ]; then
+	defaults write com.knollsoft.Rectangle gapSize -float $1
+	killall Rectangle
+	open /Applications/Rectangle.app
+else
+	defaults read com.knollsoft.Rectangle gapSize
+fi

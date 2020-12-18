@@ -1,0 +1,106 @@
+#!/usr/bin/env sh
+
+#source ~/.config/yabai/toggle.sh
+#source ~/.cache/wal/colors.sh
+
+#Passive colors
+p1="${color8:1}"
+#active colors - (same as position on bar)
+c1="${color2:1}"
+c2="${color4:1}"
+c3="${color3:1}"
+c4="${color9:1}"
+c5="${color5:1}"
+
+#Theme specific colors
+nordActive=81a1c1
+nordActive2=7EDDDE
+nordInactive=1B222D
+gruvInactive=32302f
+gruvActiveBlue=83a598
+gruvPassive=282828
+gruvActive=504945
+
+# global settings
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          off
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               off
+yabai -m config window_opacity               off
+yabai -m config window_opacity_duration      0.5
+yabai -m config window_shadow                on
+yabai -m config active_window_opacity        0.80
+yabai -m config normal_window_opacity        0.80
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               cmd
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+
+# Boarders
+yabai -m config window_border                off
+yabai -m config window_border_width          8
+yabai -m config active_window_border_color   0xff$c4
+yabai -m config insert_feedback_color        0xff$c2
+yabai -m config normal_window_border_color   0xff$gruvInactive
+
+# general space settings
+yabai -m config layout                       float
+yabai -m config top_padding                  38
+yabai -m config bottom_padding               4
+yabai -m config left_padding                 4
+yabai -m config right_padding                4
+yabai -m config window_gap                   6
+
+# Running through float windows
+yabai -m space 1 --label code
+yabai -m space 2 --label main
+yabai -m space 3 --label web
+yabai -m space 4 --label notes
+yabai -m space 5 --label other
+
+yabai -m config --space 1 layout             bsp
+#yabai -m config --space 2 layout             float
+#yabai -m config --space 3 layout             stack
+
+# Rules for specific apps to launch and be managed by yabai
+# yabai -m rule --add app=Spotify --space 6
+# yabai -m rule --add app=Discord --space 6
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app=Dashlane manage=off
+yabai -m rule --add app=Spotify manage=off
+yabai -m rule --add app=Godot manage=off
+yabai -m rule --add app=Discord manage=off
+yabai -m rule --add app=Übersicht manage=off
+yabai -m rule --add app=BetterTouchTool manage=off
+
+# signals to map focus how I like it
+# yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+# yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+
+echo "yabai configuration loaded.."
+
+# Refresh spaces widget on space change
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on display focus change
+yabai -m signal --add event=display_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh process widget on space change
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+
+# Refresh process widget on when focused application changes
+yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+# Refresh spaces widget on when focused application changes
+yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# Refresh process widget on when focused application changes
+yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+# Refresh spaces widget on when focused application changes
+yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# Refresh process widget on when an application window is closed
+yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+# Refresh spaces widget on when an application window is closed
+yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# Refresh process widget when current window title changes
+yabai -m signal --add event=window_title_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"

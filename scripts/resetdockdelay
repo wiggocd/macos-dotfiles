@@ -1,0 +1,1 @@
+defaults delete com.apple.Dock autohide-delay && killall Dock
